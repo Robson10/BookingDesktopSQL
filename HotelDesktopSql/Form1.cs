@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using HotelDesktopSql.PracownikF;
 
 namespace HotelDesktopSql
 {
@@ -13,8 +14,8 @@ namespace HotelDesktopSql
             InitializeComponent();
             this.FormBorderStyle = Dictionary.Dc_borderStyle;
             this.Text = "Logowanie";
-            LoginTB.Text = "Imie1";
-            PasswordTB.Text = "Nazwisko1";
+            LoginTB.Text = "Bartosz";
+            PasswordTB.Text = "Gronostaj";
             this.BackColor = Dictionary.BackColor;
             label1.ForeColor = Dictionary.ForeColor;
             label2.ForeColor = Dictionary.ForeColor;
@@ -30,7 +31,7 @@ namespace HotelDesktopSql
         string query2 ="select Pracownik.Pra_ID,Pracownik.Pra_Login,Pracownik.Pra_Haslo from Database_1.dbo.Pracownik";
 
         List<Osoba> klienci = new List<Osoba>();
-        List<PracownicyItem> pracownicy = new List<PracownicyItem>();
+        List<Pracownik> pracownicy = new List<Pracownik>();
 
         private void BaseOperation(string query, string query2)
         {
@@ -60,7 +61,7 @@ namespace HotelDesktopSql
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     DataRow x = dt.Rows[i];
-                    pracownicy.Add(new PracownicyItem()
+                    pracownicy.Add(new Pracownik()
                     {
                         Pr_ID = x.Field<Int32>(0),
                         Pr_Imie = x.Field<string>(1),
@@ -89,7 +90,7 @@ namespace HotelDesktopSql
             {
                 if (pracownicy[i].Pr_Imie.Equals(LoginTB.Text) && pracownicy[i].Pr_Nazwisko.Equals(PasswordTB.Text))
                 {
-                    Pracownik.PracownikForm PracownikWindow = new Pracownik.PracownikForm(pracownicy[i]);
+                    PracownikForm PracownikWindow = new PracownikForm(pracownicy[i]);
                     Hide();
                     if (PracownikWindow.ShowDialog() == DialogResult.OK)
                     {

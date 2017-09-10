@@ -182,7 +182,8 @@ namespace HotelDesktopSql.Klient
             Dictionary.SelectData(query, true, ref dataGridView1, new Panel(), ref tempAdap, ref tempDataset, "Pokoj",
                 this);
             dataGridView1.Width = this.Width;
-            //dataGridView1.Columns[0].Visible = false;
+            if (dataGridView1.Columns.Count>0)
+            dataGridView1.Columns[0].Visible = false;
             dataGridView1.MultiSelect = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Invalidate();

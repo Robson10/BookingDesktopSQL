@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HotelDesktopSql
+﻿namespace HotelDesktopSql.PracownikF
 {
-    public class PracownicyItem
+    public class Pracownik
     {
         public int Pr_ID { get; set; }
         public string Pr_Imie { get; set; }
